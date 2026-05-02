@@ -10,11 +10,11 @@ from dotenv import load_dotenv
 load_dotenv() 
 
 Base.metadata.create_all(bind=engine)
-
+FRONTEND_URL = os.getenv("FRONTEND_URL", "https://student-management-by-vishnu.vercel.app")
 app = FastAPI(title="Student Management API", version="1.0.0")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=["https://student-management-by-vishnu.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
