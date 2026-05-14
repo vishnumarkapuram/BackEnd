@@ -33,6 +33,9 @@ def create_student(
     db: Session = Depends(get_db),
     current_user = Depends(get_current_user)
 ):
+    student = db.query(Student).filter(Student.email == data.email).first()
+    if student:
+        raise HTTPException(status_code=400, detail="Student with email already exists")
     student = Student(**data.dict())
     db.add(student)
     db.commit()
