@@ -20,12 +20,10 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd BackEnd
           pip install -r requirements.txt
 
       - name: Run tests
         run: |
-          cd BackEnd
           python -m pytest tests/ -v
         env:
           SECRET_KEY: test-secret-key-for-ci-only-not-production
